@@ -1,0 +1,1354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ElectroMart - Electronics Store</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f7fb;
+    color: #222;
+}
+
+/* NAVBAR */
+.navbar {
+    background: #111827;
+    color: white;
+    padding: 18px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #38bdf8;
+}
+
+.logo span {
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+.cart-button {
+    background: #2563eb;
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(120deg, #0f172a, #2563eb);
+    color: white;
+    padding: 80px 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hero-text {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: #38bdf8;
+}
+
+.hero p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    color: #dbeafe;
+}
+
+.hero-button {
+    display: inline-block;
+    background: #38bdf8;
+    color: #082f49;
+    padding: 13px 25px;
+    border-radius: 7px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero-icon {
+    font-size: 130px;
+}
+
+/* SEARCH */
+.search-area {
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.search-box {
+    width: 70%;
+    max-width: 700px;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 30px;
+    font-size: 16px;
+    outline: none;
+}
+
+/* CATEGORIES */
+.categories {
+    text-align: center;
+    padding: 10px 5%;
+}
+
+.category-btn {
+    border: none;
+    background: white;
+    padding: 11px 20px;
+    margin: 5px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: #2563eb;
+    color: white;
+}
+
+/* PRODUCTS */
+.products {
+    padding: 50px 7%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.section-title p {
+    color: #667085;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+}
+
+.product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-image {
+    height: 200px;
+    background: #eff6ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.category {
+    color: #2563eb;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.product-info h3 {
+    margin: 8px 0;
+}
+
+.description {
+    color: #667085;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.rating {
+    color: #f59e0b;
+    margin: 10px 0;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.old-price {
+    color: #999;
+    text-decoration: line-through;
+    font-size: 13px;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.add-btn,
+.details-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.add-btn {
+    background: #2563eb;
+    color: white;
+    border: none;
+}
+
+.add-btn:hover {
+    background: #1d4ed8;
+}
+
+.details-btn {
+    background: white;
+    color: #2563eb;
+    border: 1px solid #2563eb;
+}
+
+/* FEATURES */
+.features {
+    background: #111827;
+    color: white;
+    padding: 50px 7%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    text-align: center;
+}
+
+.feature {
+    padding: 15px;
+}
+
+.feature-icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.feature p {
+    color: #cbd5e1;
+    margin-top: 8px;
+}
+
+/* FOOTER */
+footer {
+    background: #080f1d;
+    color: white;
+    padding: 40px 7% 20px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+}
+
+footer h3 {
+    color: #38bdf8;
+    margin-bottom: 15px;
+}
+
+footer p {
+    color: #cbd5e1;
+    line-height: 1.8;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #374151;
+    margin-top: 30px;
+    padding-top: 20px;
+    color: #94a3b8;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: white;
+    width: 450px;
+    max-width: 100%;
+    padding: 30px;
+    border-radius: 12px;
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.modal-image {
+    height: 160px;
+    background: #eff6ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.modal-box p {
+    margin: 12px 0;
+    line-height: 1.5;
+    color: #555;
+}
+
+/* CART */
+.cart {
+    display: none;
+    position: fixed;
+    top: 75px;
+    right: 20px;
+    width: 350px;
+    max-width: 90%;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+    z-index: 900;
+}
+
+.cart h2 {
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+    padding: 12px 0;
+}
+
+.remove-btn {
+    background: #fee2e2;
+    color: #dc2626;
+    border: none;
+    padding: 5px 8px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.total {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.checkout {
+    width: 100%;
+    padding: 12px;
+    background: #16a34a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* MOBILE */
+@media(max-width: 768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 36px;
+    }
+
+    .hero-icon {
+        font-size: 90px;
+        margin-top: 30px;
+    }
+
+    .search-box {
+        width: 90%;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        Electro<span>Mart</span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <button class="cart-button" onclick="toggleCart()">
+        🛒 Cart (<span id="cartCount">0</span>)
+    </button>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <h1>
+            Smart Electronics for a
+            <span>Smart Life</span>
+        </h1>
+
+        <p>
+            Find the latest smartphones, laptops,
+            headphones, cameras and smart devices
+            at the best prices.
+        </p>
+
+        <a href="#products" class="hero-button">
+            Shop Now
+        </a>
+
+    </div>
+
+    <div class="hero-icon">
+        💻
+    </div>
+
+</section>
+
+
+<!-- SEARCH -->
+
+<div class="search-area">
+
+    <input
+        type="text"
+        class="search-box"
+        id="search"
+        placeholder="🔍 Search products..."
+        onkeyup="searchProducts()"
+    >
+
+</div>
+
+
+<!-- CATEGORY -->
+
+<div class="categories">
+
+    <button class="category-btn active"
+            onclick="filterProducts('all', this)">
+        All
+    </button>
+
+    <button class="category-btn"
+            onclick="filterProducts('mobile', this)">
+        📱 Mobile
+    </button>
+
+    <button class="category-btn"
+            onclick="filterProducts('laptop', this)">
+        💻 Laptop
+    </button>
+
+    <button class="category-btn"
+            onclick="filterProducts('audio', this)">
+        🎧 Audio
+    </button>
+
+    <button class="category-btn"
+            onclick="filterProducts('camera', this)">
+        📷 Camera
+    </button>
+
+    <button class="category-btn"
+            onclick="filterProducts('watch', this)">
+        ⌚ Watch
+    </button>
+
+</div>
+
+
+<!-- PRODUCTS -->
+
+<section class="products" id="products">
+
+    <div class="section-title">
+        <h2>Our Products</h2>
+        <p>Explore our latest electronics</p>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+
+
+        <!-- MOBILE -->
+
+        <div class="product-card"
+             data-category="mobile"
+             data-name="iPhone Pro">
+
+            <div class="product-image">
+                📱
+            </div>
+
+            <div class="product-info">
+
+                <div class="category">MOBILE</div>
+
+                <h3>iPhone Pro</h3>
+
+                <p class="description">
+                    Premium smartphone with powerful
+                    processor and advanced camera.
+                </p>
+
+                <div class="rating">
+                    ★★★★★
+                </div>
+
+                <div class="price">
+                    ₹89,999
+                    <span class="old-price">₹99,999</span>
+                </div>
+
+                <div class="buttons">
+
+                    <button class="add-btn"
+                            onclick="addToCart('iPhone Pro', 89999)">
+                        Add Cart
+                    </button>
+
+                    <button class="details-btn"
+                            onclick="showDetails(
+                            'iPhone Pro',
+                            '📱',
+                            'Mobile',
+                            '₹89,999',
+                            'Premium smartphone with advanced camera, powerful processor and beautiful display.'
+                            )">
+                        Details
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- LAPTOP -->
+
+        <div class="product-card"
+             data-category="laptop"
+             data-name="Gaming Laptop">
+
+            <div class="product-image">
+                💻
+            </div>
+
+            <div class="product-info">
+
+                <div class="category">LAPTOP</div>
+
+                <h3>Gaming Laptop</h3>
+
+                <p class="description">
+                    High-performance laptop for gaming,
+                    coding and professional work.
+                </p>
+
+                <div class="rating">
+                    ★★★★★
+                </div>
+
+                <div class="price">
+                    ₹79,999
+                    <span class="old-price">₹89,999</span>
+                </div>
+
+                <div class="buttons">
+
+                    <button class="add-btn"
+                            onclick="addToCart('Gaming Laptop', 79999)">
+                        Add Cart
+                    </button>
+
+                    <button class="details-btn"
+                            onclick="showDetails(
+                            'Gaming Laptop',
+                            '💻',
+                            'Laptop',
+                            '₹79,999',
+                            'High-performance laptop suitable for gaming, programming and professional applications.'
+                            )">
+                        Details
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- HEADPHONES -->
+
+        <div class="product-card"
+             data-category="audio"
+             data-name="Wireless Headphones">
+
+            <div class="product-image">
+                🎧
+            </div>
+
+            <div class="product-info">
+
+                <div class="category">AUDIO</div>
+
+                <h3>Wireless Headphones</h3>
+
+                <p class="description">
+                    Premium sound with active
+                    noise cancellation.
+                </p>
+
+                <div class="rating">
+                    ★★★★★
+                </div>
+
+                <div class="price">
+                    ₹5,999
+                    <span class="old-price">₹7,999</span>
+                </div>
+
+                <div class="buttons">
+
+                    <button class="add-btn"
+                            onclick="addToCart('Wireless Headphones', 5999)">
+                        Add Cart
+                    </button>
+
+                    <button class="details-btn"
+                            onclick="showDetails(
+                            'Wireless Headphones',
+                            '🎧',
+                            'Audio',
+                            '₹5,999',
+                            'Wireless headphones with noise cancellation and high-quality audio.'
+                            )">
+                        Details
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- CAMERA -->
+
+        <div class="product-card"
+             data-category="camera"
+             data-name="Digital Camera">
+
+            <div class="product-image">
+                📷
+            </div>
+
+            <div class="product-info">
+
+                <div class="category">CAMERA</div>
+
+                <h3>Digital Camera</h3>
+
+                <p class="description">
+                    High-resolution camera for
+                    professional photography.
+                </p>
+
+                <div class="rating">
+                    ★★★★☆
+                </div>
+
+                <div class="price">
+                    ₹45,999
+                    <span class="old-price">₹52,999</span>
+                </div>
+
+                <div class="buttons">
+
+                    <button class="add-btn"
+                            onclick="addToCart('Digital Camera', 45999)">
+                        Add Cart
+                    </button>
+
+                    <button class="details-btn"
+                            onclick="showDetails(
+                            'Digital Camera',
+                            '📷',
+                            'Camera',
+                            '₹45,999',
+                            'High-resolution digital camera with excellent photography and video capabilities.'
+                            )">
+                        Details
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- SMART WATCH -->
+
+        <div class="product-card"
+             data-category="watch"
+             data-name="Smart Watch">
+
+            <div class="product-image">
+                ⌚
+            </div>
+
+            <div class="product-info">
+
+                <div class="category">WATCH</div>
+
+                <h3>Smart Watch</h3>
+
+                <p class="description">
+                    Fitness tracking, notifications
+                    and health monitoring.
+                </p>
+
+                <div class="rating">
+                    ★★★★★
+                </div>
+
+                <div class="price">
+                    ₹3,999
+                    <span class="old-price">₹5,999</span>
+                </div>
+
+                <div class="buttons">
+
+                    <button class="add-btn"
+                            onclick="addToCart('Smart Watch', 3999)">
+                        Add Cart
+                    </button>
+
+                    <button class="details-btn"
+                            onclick="showDetails(
+                            'Smart Watch',
+                            '⌚',
+                            'Watch',
+                            '₹3,999',
+                            'Smart watch with fitness tracking, notifications and health monitoring features.'
+                            )">
+                        Details
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- SPEAKER -->
+
+        <div class="product-card"
+             data-category="audio"
+             data-name="Bluetooth Speaker">
+
+            <div class="product-image">
+                🔊
+            </div>
+
+            <div class="product-info">
+
+                <div class="category">AUDIO</div>
+
+                <h3>Bluetooth Speaker</h3>
+
+                <p class="description">
+                    Portable speaker with powerful
+                    bass and clear sound.
+                </p>
+
+                <div class="rating">
+                    ★★★★☆
+                </div>
+
+                <div class="price">
+                    ₹2,999
+                    <span class="old-price">₹4,999</span>
+                </div>
+
+                <div class="buttons">
+
+                    <button class="add-btn"
+                            onclick="addToCart('Bluetooth Speaker', 2999)">
+                        Add Cart
+                    </button>
+
+                    <button class="details-btn"
+                            onclick="showDetails(
+                            'Bluetooth Speaker',
+                            '🔊',
+                            'Audio',
+                            '₹2,999',
+                            'Portable Bluetooth speaker with powerful bass and long battery life.'
+                            )">
+                        Details
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section class="features" id="services">
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            🚚
+        </div>
+
+        <h3>Fast Delivery</h3>
+
+        <p>
+            Quick delivery across India.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            🔒
+        </div>
+
+        <h3>Secure Payment</h3>
+
+        <p>
+            Safe and secure payments.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            ↩️
+        </div>
+
+        <h3>Easy Returns</h3>
+
+        <p>
+            Simple return process.
+        </p>
+
+    </div>
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            ☎️
+        </div>
+
+        <h3>24/7 Support</h3>
+
+        <p>
+            Customer support anytime.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+    <div class="footer-grid">
+
+        <div>
+            <h3>ElectroMart</h3>
+
+            <p>
+                Your one-stop electronics store
+                for modern technology.
+            </p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+
+            <p>Home</p>
+            <p>Products</p>
+            <p>Services</p>
+            <p>Contact</p>
+        </div>
+
+        <div>
+            <h3>Categories</h3>
+
+            <p>Mobiles</p>
+            <p>Laptops</p>
+            <p>Audio</p>
+            <p>Cameras</p>
+        </div>
+
+        <div>
+            <h3>Contact</h3>
+
+            <p>📧 support@electromart.com</p>
+            <p>📞 +91 98765 43210</p>
+            <p>📍 Chennai, India</p>
+        </div>
+
+    </div>
+
+    <div class="copyright">
+        © 2026 ElectroMart. All Rights Reserved.
+    </div>
+
+</footer>
+
+
+<!-- PRODUCT DETAILS MODAL -->
+
+<div class="modal" id="detailsModal">
+
+    <div class="modal-box">
+
+        <span class="close" onclick="closeDetails()">
+            &times;
+        </span>
+
+        <div class="modal-image" id="modalImage">
+            📱
+        </div>
+
+        <h2 id="modalName">
+            Product
+        </h2>
+
+        <p>
+            <b>Category:</b>
+            <span id="modalCategory"></span>
+        </p>
+
+        <p>
+            <b>Price:</b>
+            <span id="modalPrice"></span>
+        </p>
+
+        <p id="modalDescription"></p>
+
+        <button class="add-btn"
+                style="width:100%; margin-top:10px;"
+                onclick="addModalProduct()">
+            Add to Cart
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- CART -->
+
+<div class="cart" id="cart">
+
+    <span class="close" onclick="toggleCart()">
+        &times;
+    </span>
+
+    <h2>🛒 Shopping Cart</h2>
+
+    <div id="cartItems">
+        Your cart is empty.
+    </div>
+
+    <div class="total">
+        Total: ₹<span id="cartTotal">0</span>
+    </div>
+
+    <button class="checkout"
+            onclick="checkout()">
+        Checkout
+    </button>
+
+</div>
+
+
+<script>
+
+let cart = [];
+let total = 0;
+
+let modalName = "";
+let modalPrice = 0;
+
+
+/* ADD PRODUCT */
+
+function addToCart(name, price) {
+
+    cart.push({
+        name: name,
+        price: price
+    });
+
+    total = total + price;
+
+    updateCart();
+
+    alert(name + " added to cart!");
+}
+
+
+/* UPDATE CART */
+
+function updateCart() {
+
+    document.getElementById("cartCount").innerText =
+        cart.length;
+
+    document.getElementById("cartTotal").innerText =
+        total.toLocaleString("en-IN");
+
+    let cartItems =
+        document.getElementById("cartItems");
+
+    if (cart.length === 0) {
+
+        cartItems.innerHTML =
+            "Your cart is empty.";
+
+        return;
+    }
+
+    cartItems.innerHTML = "";
+
+    cart.forEach(function(item, index) {
+
+        let div = document.createElement("div");
+
+        div.className = "cart-item";
+
+        div.innerHTML =
+            "<span>" +
+            item.name +
+            "<br>₹" +
+            item.price.toLocaleString("en-IN") +
+            "</span>" +
+
+            "<button class='remove-btn' " +
+            "onclick='removeItem(" + index + ")'>" +
+            "Remove</button>";
+
+        cartItems.appendChild(div);
+
+    });
+}
+
+
+/* REMOVE ITEM */
+
+function removeItem(index) {
+
+    total = total - cart[index].price;
+
+    cart.splice(index, 1);
+
+    updateCart();
+}
+
+
+/* OPEN / CLOSE CART */
+
+function toggleCart() {
+
+    let cartBox =
+        document.getElementById("cart");
+
+    if (cartBox.style.display === "block") {
+
+        cartBox.style.display = "none";
+
+    } else {
+
+        cartBox.style.display = "block";
+    }
+}
+
+
+/* SEARCH */
+
+function searchProducts() {
+
+    let value =
+        document.getElementById("search")
+        .value
+        .toLowerCase();
+
+    let products =
+        document.querySelectorAll(".product-card");
+
+    products.forEach(function(product) {
+
+        let name =
+            product.dataset.name.toLowerCase();
+
+        if (name.includes(value)) {
+
+            product.style.display = "block";
+
+        } else {
+
+            product.style.display = "none";
+        }
+
+    });
+}
+
+
+/* FILTER */
+
+function filterProducts(category, button) {
+
+    let buttons =
+        document.querySelectorAll(".category-btn");
+
+    buttons.forEach(function(btn) {
+
+        btn.classList.remove("active");
+
+    });
+
+    button.classList.add("active");
+
+    let products =
+        document.querySelectorAll(".product-card");
+
+    products.forEach(function(product) {
+
+        if (
+            category === "all" ||
+            product.dataset.category === category
+        ) {
+
+            product.style.display = "block";
+
+        } else {
+
+            product.style.display = "none";
+        }
+
+    });
+
+    document.getElementById("search").value = "";
+}
+
+
+/* SHOW DETAILS */
+
+function showDetails(
+    name,
+    image,
+    category,
+    price,
+    description
+) {
+
+    document.getElementById("modalName").innerText =
+        name;
+
+    document.getElementById("modalImage").innerText =
+        image;
+
+    document.getElementById("modalCategory").innerText =
+        category;
+
+    document.getElementById("modalPrice").innerText =
+        price;
+
+    document.getElementById("modalDescription").innerText =
+        description;
+
+    modalName = name;
+
+    modalPrice =
+        parseInt(price.replace(/[₹,]/g, ""));
+
+    document.getElementById("detailsModal")
+        .style.display = "flex";
+}
+
+
+/* CLOSE DETAILS */
+
+function closeDetails() {
+
+    document.getElementById("detailsModal")
+        .style.display = "none";
+}
+
+
+/* ADD FROM DETAILS */
+
+function addModalProduct() {
+
+    addToCart(
+        modalName,
+        modalPrice
+    );
+
+    closeDetails();
+}
+
+
+/* CHECKOUT */
+
+function checkout() {
+
+    if (cart.length === 0) {
+
+        alert("Your cart is empty!");
+
+        return;
+    }
+
+    alert(
+        "Order placed successfully!\n\n" +
+        "Total Amount: ₹" +
+        total.toLocaleString("en-IN")
+    );
+
+    cart = [];
+    total = 0;
+
+    updateCart();
+
+    document.getElementById("cart")
+        .style.display = "none";
+}
+
+
+/* CLOSE MODAL WHEN CLICKING OUTSIDE */
+
+window.onclick = function(event) {
+
+    let modal =
+        document.getElementById("detailsModal");
+
+    if (event.target === modal) {
+
+        modal.style.display = "none";
+    }
+};
+
+</script>
+
+</body>
+</html>
